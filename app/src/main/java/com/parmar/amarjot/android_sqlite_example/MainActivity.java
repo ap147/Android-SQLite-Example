@@ -9,12 +9,27 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    DatabaseHelper mDatabaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mDatabaseHelper = new DatabaseHelper(this);
         setupButtons();
+        addData("YES");
+    }
+
+    private void addData(String newEntry) {
+        boolean insertData = mDatabaseHelper.addData(newEntry);
+
+        if (insertData) {
+            toastMessage("Success");
+        }
+        else {
+            toastMessage("go eat");
+        }
+
     }
 
     public void setupButtons()
@@ -25,26 +40,24 @@ public class MainActivity extends AppCompatActivity {
         recordMessagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Context context = getApplicationContext();
-                CharSequence text = "Record Message Clicked";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                toastMessage("recordMessagesButton Clicked");
             }
         });
 
         showMessagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
-                Context context = getApplicationContext();
-                CharSequence text = "Show Message Clicked";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                toastMessage("showMessagesButton Clicked");
             }
         });
+    }
+
+    private void toastMessage(String msg){
+
+        Context context = getApplicationContext();
+        CharSequence text = msg;
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }

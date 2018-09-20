@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -18,7 +18,7 @@ public class SendMessageActivtiy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_message);
         mDatabaseHelper = new DatabaseHelper(this);
-        
+
         setupButtons();
     }
 
@@ -28,10 +28,10 @@ public class SendMessageActivtiy extends AppCompatActivity {
 
         showMessageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                TextView textView = findViewById(R.id.textViewMsg);
-                String msg = (String) textView.getText();
+                EditText editText = findViewById(R.id.textViewMsg);
+                String msg = editText.toString();
 
-                addData("HI");
+                addData(msg);
             }
         });
     }
@@ -40,14 +40,12 @@ public class SendMessageActivtiy extends AppCompatActivity {
         boolean insertData = mDatabaseHelper.addData(newEntry);
 
         if (insertData) {
-            toastMessage("Success");
+            toastMessage("Successfully added message.");
         }
         else {
-            toastMessage("go eat");
+            toastMessage("Failed to add message.");
         }
     }
-    // When send button pressed take users input and store in database.
-    // Clear Textbox and make a toast.
 
     private void toastMessage(String msg){
 

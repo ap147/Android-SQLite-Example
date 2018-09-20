@@ -19,11 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <EditText
             android:id="@+id/textViewMsg"
-            android:layout_width="match_parent"
-            android:layout_height="179dp"
-            android:text="Message Goes Here" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" >
+        </EditText>
 
         <Button
             android:id="@+id/buttonSendMessage"

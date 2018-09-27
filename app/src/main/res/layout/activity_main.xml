@@ -19,16 +19,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/buttonShowMessages"
+        <ScrollView
+            android:id="@+id/msgScrollBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Show Messages" />
+            android:layout_height="300dp">
+
+            <LinearLayout
+                android:id="@+id/msgs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/textViewMsg"
+            android:layout_width="fill_parent"
+            android:layout_height="70dp"
+            android:background="@android:color/transparent"
+            android:inputType="text"></EditText>
 
         <Button
-            android:id="@+id/buttonRecordMessages"
+            android:id="@+id/buttonSendMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Record Messages" />
+            android:text="Send Message" />
+
+        <Button
+            android:id="@+id/buttonClearMsgs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clear Messages" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
